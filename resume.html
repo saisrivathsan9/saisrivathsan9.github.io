@@ -167,7 +167,15 @@
     display:flex; align-items:center; gap:20px; flex:1; min-width:260px;
   }
 
-  /* AWS BADGE PLACEHOLDER */
+  /* AWS BADGE */
+  .cert-badge-img{
+    width:84px; height:84px; min-width:84px;
+    object-fit:contain;
+    filter:drop-shadow(0 4px 14px rgba(255,106,51,.25));
+    transition:transform .2s ease;
+  }
+  .cert-badge-img:hover{transform:scale(1.06);}
+
   .badge-placeholder{
     width:84px; height:84px; min-width:84px;
     border-radius:14px; background:rgba(255,106,51,.08);
@@ -389,11 +397,10 @@
     <!-- AWS CERTIFICATION WITH BADGE PLACEHOLDER -->
     <div class="cert-item">
       <div class="cert-left">
-        <!-- CREDENTIAL BADGE PNG PLACEHOLDER -->
-        <div class="badge-placeholder" title="AWS AI Practitioner Badge Placeholder">
-          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-          <span>AWS Badge</span>
-        </div>
+        <!-- AWS CERTIFICATION BADGE -->
+        <a href="https://www.credly.com/badges/026e660d-f387-4956-9046-0d288bc79c01/public_url" target="_blank" rel="noopener">
+          <img src="aws-ai-cert-badge.png" alt="AWS Certified AI Practitioner Badge" class="cert-badge-img">
+        </a>
         <div class="cert-info">
           <h4>AWS Certified AI Practitioner</h4>
           <p>Amazon Web Services (AWS) — Validated foundational AI/ML and cloud proficiency</p>
