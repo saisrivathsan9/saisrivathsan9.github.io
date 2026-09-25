@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Saisrivathsan Manikandan — Portfolio</title>
+<style>
+  :root{
+    --bg:#ffffff; --text:#14151a; --muted:#6b6d76;
+    --accent:#ff5a1f; --line:#ececec; --card:#fafafa;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#111214; --text:#f5f5f4; --muted:#a1a1aa;
+      --accent:#ff6a33; --line:#26272b; --card:#18191c;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#111214; --text:#f5f5f4; --muted:#a1a1aa;
+    --accent:#ff6a33; --line:#26272b; --card:#18191c;
+  }
+  html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px);}
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{max-width:100%;}
+  .wrap{max-width:980px; margin:0 auto; padding:0 24px;}
+  section{padding:110px 0 70px; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  h1,h2,h3{margin:0; font-weight:800; letter-spacing:-0.02em;}
+  h2{font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:34px;}
+  p{color:var(--text);}
+  .muted{color:var(--muted);}
+
+  /* NAV */
+  nav{
+    position:fixed; top:calc(18px + env(safe-area-inset-top,0px)); left:50%;
+    transform:translateX(-50%); z-index:50;
+    background:var(--bg); border:1px solid var(--line);
+    border-radius:999px; padding:8px; display:flex; gap:2px;
+    box-shadow:0 6px 20px rgba(0,0,0,.06);
+  }
+  .nav-indicator{
+    position:absolute; top:0; left:0;
+    border-radius:999px;
+    background:var(--accent);
+    box-shadow:0 2px 12px rgba(255,90,31,.35);
+    transition:transform .3s cubic-bezier(0.25, 1, 0.5, 1), width .3s cubic-bezier(0.25, 1, 0.5, 1), opacity .2s;
+    pointer-events:none;
+    z-index:1;
+    opacity:0;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .nav-indicator{transition:none !important;}
+  }
+  nav a{
+    position:relative; z-index:2;
+    text-decoration:none; font-size:.88rem; font-weight:600;
+    padding:9px 16px; border-radius:999px; color:var(--muted);
+    transition:color .2s;
+  }
+  nav a:hover, nav a:focus-visible{color:var(--text);}
+  nav a.active{color:#fff !important;}
+  nav a.brand{color:var(--accent);}
+
+  /* ABOUT */
+  #about{padding-top:160px;}
+  .about-grid{display:grid; grid-template-columns:200px 1fr; gap:48px; align-items:center;}
+  .avatar{
+    width:200px; height:200px; border-radius:50%; background:var(--card);
+    border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
+    font-size:3.4rem; font-weight:800; color:var(--accent);
+    overflow:hidden;
+  }
+  .avatar img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  #about h1{font-size:clamp(2rem,4.5vw,2.9rem); margin-bottom:10px;}
+  #about .role{color:var(--accent); font-weight:700; margin-bottom:16px;}
+  #about p{max-width:60ch; color:var(--muted);}
+
+  /* JOURNEY */
+  .timeline{list-style:none; margin:0; padding:0; border-left:2px solid var(--line);}
+  .timeline li{position:relative; padding:0 0 32px 28px;}
+  .timeline li:last-child{padding-bottom:0;}
+  .timeline li::before{
+    content:""; position:absolute; left:-7px; top:4px;
+    width:12px; height:12px; border-radius:50%; background:var(--accent);
+  }
+  .timeline .when{font-size:.82rem; color:var(--muted); font-weight:600;}
+  .timeline h3{font-size:1.05rem; margin:2px 0 6px;}
+  .timeline p{color:var(--muted); max-width:65ch;}
+
+  /* PROJECTS */
+  .grid3{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px;}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:24px; display:flex; flex-direction:column; gap:12px;
+  }
+  .card h3{font-size:1.08rem;}
+  .card p{color:var(--muted); font-size:.92rem; margin:0; flex:1;}
+  .card-links{display:flex; gap:10px; margin-top:6px;}
+  .btn{
+    text-decoration:none; font-size:.85rem; font-weight:700; padding:9px 14px;
+    border-radius:8px; text-align:center; border:1px solid var(--line);
+  }
+  .btn.solid{background:var(--accent); color:#fff; border-color:var(--accent);}
+  .btn.outline:hover{border-color:var(--accent); color:var(--accent);}
+
+  /* RESUME */
+  .resume-top{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:34px;}
+  .resume-top h2{margin:0;}
+  .grid3 .card ul{margin:0; padding-left:18px; color:var(--muted); font-size:.92rem;}
+  .grid3 .card ul li{margin-bottom:6px;}
+
+  /* CONTACT */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .contact-card{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:48px 24px; display:flex; flex-direction:column; align-items:center;
+    gap:14px; text-decoration:none; text-align:center; transition:border-color .15s, transform .15s;
+  }
+  .contact-card:hover{border-color:var(--accent); transform:translateY(-3px);}
+  .contact-card .ic{
+    width:56px; height:56px; border-radius:50%; background:var(--accent);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .contact-card .ic svg{width:26px; height:26px; fill:#fff;}
+  .contact-card strong{font-size:1.1rem;}
+  .contact-card span{color:var(--muted); font-size:.9rem;}
+
+  footer{padding:28px 0 40px; text-align:center; color:var(--muted); font-size:.85rem;}
+
+  @media (max-width:640px){
+    .about-grid{grid-template-columns:1fr; text-align:center;}
+    .avatar{margin:0 auto;}
+    #about p{margin:0 auto;}
+    .contact-grid{grid-template-columns:1fr;}
+    nav{gap:0; padding:6px;}
+    nav a{padding:8px 10px; font-size:.78rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <span class="nav-indicator" id="navIndicator"></span>
+  <a href="#about" class="active">About</a>
+  <a href="#journey">Journey</a>
+  <a href="#projects">Projects</a>
+  <a href="#resume">Resume</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div class="wrap">
+
+  <section id="about">
+    <div class="about-grid">
+      <div class="avatar">
+        <img src="image.png" alt="Saisrivathsan Manikandan" onerror="this.onerror=null; this.parentElement.innerText='SM';">
+      </div>
+      <div>
+        <h1>Saisrivathsan Manikandan</h1>
+        <p class="role">Computer Science Graduate Student &amp; AI Systems Engineer</p>
+        <p>I specialize in deep learning, computer vision, multimodal AI, and LLM systems. Experienced in PyTorch, FastAPI, distributed training (DDP), on-premises inference, AWS SageMaker, and MLOps, with a proven track record implementing research models and building end-to-end AI pipelines.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="journey">
+    <h2>My Journey</h2>
+    <ul class="timeline">
+      <li>
+        <div class="when">2022 — 2026</div>
+        <h3>B.S. in Computer Science, Arizona State University</h3>
+        <p>Focused on Data Structures &amp; Algorithms, Image Processing &amp; Analysis (Deep Learning), and Machine Learning. Built foundational expertise in algorithms and systems programming.</p>
+      </li>
+      <li>
+        <div class="when">2024 — 2025</div>
+        <h3>App Development &amp; Cloud / MLOps Certifications</h3>
+        <p>Shipped Zesto to the iOS App Store with LLM streaming features and Firestore sync. Earned AWS Certified AI Practitioner credential and completed MLOps Masterclass.</p>
+      </li>
+      <li>
+        <div class="when">2025 — 2026</div>
+        <h3>Medical Imaging AI Research &amp; Swin Transformers</h3>
+        <p>Adapted vision transformers for CheXpert multi-label pathology classification (0.9004 AUC), TB lesion localization, and Swin-UNet V2 segmentation with multi-GPU DDP training.</p>
+      </li>
+      <li>
+        <div class="when">2026</div>
+        <h3>SlideSight — 1st Place &amp; Fan Favorite at ASU AIR Spark</h3>
+        <p>Led development of an on-premise multimodal accessibility pipeline using Qwen3-VL-32B and FastAPI, processing 505 slides in 1.4s/image and detecting 531 WCAG violations.</p>
+      </li>
+      <li>
+        <div class="when">2026 — Expected 2027</div>
+        <h3>M.S. in Computer Science, Arizona State University</h3>
+        <p>Advancing research in deep learning, computer vision, and multimodal systems, with graduate coursework in Cloud Computing, Data-Intensive ML Systems, and Data Mining.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid3">
+      <div class="card">
+        <h3>SlideSight — ASU AIR Spark Winner</h3>
+        <p>1st Place &amp; Fan Favorite winner. On-premise multimodal accessibility pipeline using Qwen3-VL-32B, FastAPI, and python-pptx, auditing 531 WCAG violations across 505 slides.</p>
+        <div class="card-links">
+          <a class="btn solid" href="https://youtu.be/GsoHh9ocpWg" target="_blank" rel="noopener">Demo</a>
+          <a class="btn outline" href="https://github.com/saisrivathsan9/ASU-AIR-SlideSight" target="_blank" rel="noopener">Code</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Medical Imaging AI System</h3>
+        <p>Multi-task medical AI with Swin Transformers: CheXpert classification (0.9004 AUC), TB localization (mAP@0.5: 0.66), Swin-UNet V2 segmentation (0.96 Dice), and multi-GPU DDP.</p>
+        <div class="card-links">
+          <a class="btn solid" href="https://github.com/saisrivathsan9" target="_blank" rel="noopener">Demo</a>
+          <a class="btn outline" href="https://github.com/saisrivathsan9" target="_blank" rel="noopener">Code</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Zesto-iOS Recipe App</h3>
+        <p>Production iOS recipe app on the App Store featuring LLM-powered conversational assistant with streaming responses, automated receipt-parsing, and real-time Firestore sync.</p>
+        <div class="card-links">
+          <a class="btn solid" href="https://apps.apple.com/us/app/zesto-buddy/id6751173203" target="_blank" rel="noopener">Demo</a>
+          <a class="btn outline" href="https://github.com/saisrivathsan9" target="_blank" rel="noopener">Code</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="resume">
+    <div class="resume-top">
+      <h2>Resume</h2>
+      <a class="btn solid" href="resume.pdf" download>Download PDF</a>
+    </div>
+    <div class="grid3">
+      <div class="card">
+        <h3>Education</h3>
+        <ul>
+          <li>M.S. Computer Science — Arizona State University, Expected May 2027</li>
+          <li>B.S. Computer Science — Arizona State University, May 2026</li>
+          <li>Coursework: Cloud Computing, Data-Intensive ML Systems, Deep Learning</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Experience</h3>
+        <ul>
+          <li>Lead Developer, SlideSight — 1st Place &amp; Fan Favorite, ASU AIR Spark Challenge</li>
+          <li>Medical Imaging AI Researcher — Swin Transformers &amp; DDP Training Pipeline</li>
+          <li>iOS &amp; Full-Stack Developer — Zesto-Buddy LLM Recipe App (App Store)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Skills</h3>
+        <ul>
+          <li>Python, C++, C, Java, Swift, Linux</li>
+          <li>PyTorch, Swin Transformers, Computer Vision, DDP, LLMs, Hugging Face</li>
+          <li>FastAPI, AWS SageMaker, Azure, Firebase, Docker, MLOps, W&amp;B</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <a class="contact-card" href="https://linkedin.com/in/smanika3" target="_blank" rel="noopener">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1s2.49 1.12 2.49 2.5zM.24 8.25h4.5V23H.24V8.25zM8.5 8.25h4.31v2.02h.06c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V23h-4.5v-6.93c0-1.65-.03-3.78-2.3-3.78-2.3 0-2.65 1.8-2.65 3.66V23H8.5V8.25z"/></svg></div>
+        <strong>LinkedIn</strong>
+        <span>linkedin.com/in/smanika3</span>
+      </a>
+      <a class="contact-card" href="mailto:saisrivathsan2004@gmail.com">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1zm18.29 2H3.71l8.29 6.63L20.29 6zM3 18h18V7.83l-8.4 6.72a1 1 0 0 1-1.2 0L3 7.83V18z"/></svg></div>
+        <strong>Email</strong>
+        <span>saisrivathsan2004@gmail.com</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>© 2026 Saisrivathsan Manikandan. Built with care.</footer>
+</div>
+
+<script>
+  (function(){
+    const nav = document.getElementById('navbar');
+    const indicator = document.getElementById('navIndicator');
+    const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
+    const sections = links.map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+
+    let activeLink = links[0];
+    let isClickScrolling = false;
+    let clickTimeout = null;
+
+    function setIndicator(link, animate = true) {
+      if (!link || !indicator) return;
+      if (!animate) {
+        indicator.style.transition = 'none';
+      } else {
+        indicator.style.transition = 'transform .3s cubic-bezier(0.25, 1, 0.5, 1), width .3s cubic-bezier(0.25, 1, 0.5, 1), opacity .2s';
+      }
+      const left = link.offsetLeft;
+      const top = link.offsetTop;
+      const width = link.offsetWidth;
+      const height = link.offsetHeight;
+
+      indicator.style.width = width + 'px';
+      indicator.style.height = height + 'px';
+      indicator.style.transform = `translate3d(${left}px, ${top}px, 0)`;
+      indicator.style.opacity = '1';
+
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      activeLink = link;
+
+      if (!animate) {
+        indicator.offsetHeight;
+        indicator.style.transition = '';
+      }
+    }
+
+    function onScroll() {
+      if (isClickScrolling) return;
+
+      const scrollPosition = window.scrollY + 140;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+
+      if (window.scrollY + windowHeight >= documentHeight - 30) {
+        const lastLink = links[links.length - 1];
+        if (lastLink !== activeLink) setIndicator(lastLink);
+        return;
+      }
+
+      let currentSection = sections[0];
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        if (section.offsetTop <= scrollPosition) {
+          currentSection = section;
+        }
+      }
+
+      if (currentSection) {
+        const targetLink = links.find(l => l.getAttribute('href') === '#' + currentSection.id);
+        if (targetLink && targetLink !== activeLink) {
+          setIndicator(targetLink);
+        }
+      }
+    }
+
+    links.forEach(link => {
+      link.addEventListener('click', function() {
+        setIndicator(this);
+        isClickScrolling = true;
+        clearTimeout(clickTimeout);
+        clickTimeout = setTimeout(() => {
+          isClickScrolling = false;
+        }, 800);
+      });
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => setIndicator(activeLink, false));
+
+    function init() {
+      const hash = window.location.hash;
+      const initialLink = links.find(l => l.getAttribute('href') === hash) || links[0];
+      setIndicator(initialLink, false);
+      setTimeout(() => setIndicator(initialLink, false), 50);
+      setTimeout(() => setIndicator(initialLink, false), 200);
+    }
+
+    if (document.readyState === 'loading') {
+      window.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+
+</body>
+</html>

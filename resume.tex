@@ -1,0 +1,177 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Saisrivathsan Manikandan} \\ \vspace{1pt}
+    \small +1 480-876-0016 $|$ 
+    \href{mailto:saisrivathsan2004@gmail.com}{\underline{saisrivathsan2004@gmail.com}} $|$ 
+    \href{https://linkedin.com/in/smanika3}{\underline{linkedin.com/in/smanika3}} $|$
+    \href{https://github.com/saisrivathsan9}{\underline{github.com/saisrivathsan9}}
+\end{center}
+
+%----------PROFESSIONAL SUMMARY----------
+\section{Professional Summary}
+\small{Computer Science graduate student specializing in deep learning, computer vision, multimodal AI, and LLM systems. Skilled in Python, C++, PyTorch, FastAPI, distributed training, on-premises inference, AWS SageMaker, and MLOps with experience implementing research models and building end-to-end AI pipelines.}
+
+%----------EDUCATION----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Arizona State University}{Tempe, AZ}
+      {Master of Science in Computer Science}{Expected May 2027}
+        \resumeItemListStart
+        \resumeItem{\textbf{Relevant Coursework}: Cloud Computing, Data-Intensive Systems for Machine Learning, Data Mining}
+      \resumeItemListEnd
+
+      \resumeSubheading
+      {Arizona State University}{Tempe, AZ}
+      {Bachelor of Science in Computer Science}{May 2026}
+      \resumeItemListStart
+        \resumeItem{\textbf{Relevant Coursework}: Data Structures \& Algorithms, Image Processing \& Analysis (Deep Learning), Machine Learning}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%----------TECHNICAL SKILLS----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}: Python, C, C++, Java, Swift \\
+     \textbf{AI/ML}: PyTorch, Swin Transformer, Hugging Face, Computer Vision, CNNs, Scikit-learn, Generative AI, LLMs, Distributed Data Parallel (DDP), Pandas, NumPy \\
+     \textbf{Backend \& Cloud}: FastAPI, Uvicorn, Asyncio, REST APIs, AWS, Amazon SageMaker, Azure, Firebase, Linux \\
+     \textbf{DevOps \& Tools}: Docker, Git/GitHub, GitHub Actions, Weights \& Biases (W\&B), TensorBoard, Pillow, python-pptx, OpenXML
+    }}
+ \end{itemize}
+
+%----------RESEARCH PROJECTS----------
+\section{Research Projects}
+  \resumeSubHeadingListStart
+
+    \resumeProjectHeading
+      {\textbf{Medical Imaging AI System with Swin Transformers} $|$ \emph{Python, PyTorch, Timm, TorchVision}}{}
+      \resumeItemListStart
+        \resumeItem{Implemented and adapted state-of-the-art medical-imaging methods from recent research literature, applying teacher-student learning and uncertainty-aware pseudo-labeling to multi-label CheXpert classification across 14 pathologies, achieving \textbf{0.9004 mean AUC}.}
+        \resumeItem{Built Swin Transformer-based systems for TB lesion localization with Feature Pyramid Network and Faster R-CNN (\textbf{mAP@0.5: 0.66}, \textbf{FROC: 0.59}) and anatomical segmentation with Swin-UNet V2 (\textbf{Dice: 0.96}), adapting published architectures for new medical-imaging tasks.}
+        \resumeItem{Engineered a multi-GPU PyTorch Distributed Data Parallel (DDP) pipeline with mixed precision, optimized data loading, and automatic checkpoint resumption for fault-tolerant training.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%----------PROJECTS----------
+\section{Projects}
+  \resumeSubHeadingListStart
+
+    \resumeProjectHeading
+  {\textbf{SlideSight} $|$
+   \href{https://github.com/saisrivathsan9/ASU-AIR-SlideSight}{\underline{GitHub}} $|$
+   \href{https://youtu.be/GsoHh9ocpWg}{\underline{Demo}} $|$
+   \emph{Python, FastAPI, Qwen3-VL, Gemma4, Pillow}}
+  {\textbf{1st Place \& Fan Favorite}}
+      \resumeItemListStart
+        \resumeItem{Built an on-premise multimodal accessibility pipeline for the ASU AIR Spark Challenge using Qwen3-VL-32B-Instruct, FastAPI, and \texttt{python-pptx}, processing \textbf{380 images across 505 slides} from 10 university course decks at approximately \textbf{1.4 seconds per image} while keeping data on university hardware.}
+        \resumeItem{Engineered a confidence-gated human-in-the-loop workflow combining model confidence, slide-text overlap checks, spatial occupancy, and Pillow color-histogram analysis; automatically generated \textbf{228 alt-text descriptions}, silenced \textbf{122 decorative graphics}, and escalated \textbf{30 ambiguous images} for review.}
+        \resumeItem{Implemented a deterministic \textbf{WCAG 2.1 AA} audit engine for missing titles, typography, table headers, hyperlinks, and reading order, while using bounded asynchronous concurrency and a thread-safe FastAPI job registry to flag \textbf{531 accessibility violations}.}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{Zesto-iOS Recipe App} $|$ \href{https://apps.apple.com/us/app/zesto-buddy/id6751173203}{\underline{App Store}} $|$ \emph{Swift, Firebase, REST API, OpenAI API}}{}
+      \resumeItemListStart
+        \resumeItem{Built an iOS application integrating LLM-powered conversational features with streaming responses and caching layers to reduce request latency and API overhead.}
+        \resumeItem{Developed an automated receipt-parsing and recommendation pipeline that normalized grocery items into standardized entities and synchronized real-time application state through Firestore and backend APIs.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%----------CERTIFICATIONS AND TRAINING----------
+\section{Certifications \& Training}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{AWS Certified AI Practitioner} $|$ \href{https://www.credly.com/badges/026e660d-f387-4956-9046-0d288bc79c01/public_url}{\underline{Credential}}}{}
+
+    \resumeProjectHeading
+      {\textbf{MLOps Masterclass (Workshop)} $|$ \href{https://credsverse.com/credentials/663e20d4-a809-4225-8f23-78f6ed3750b4}{\underline{Certificate}}}{}
+  \resumeSubHeadingListEnd
+
+\end{document}
