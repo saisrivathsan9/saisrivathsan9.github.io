@@ -16,19 +16,9 @@
   },
   "journey": [
     {
-      "period": "2022 — 2026",
-      "title": "B.S. in Computer Science, Arizona State University",
-      "description": "Focused on Data Structures & Algorithms, Image Processing & Analysis (Deep Learning), and Machine Learning. Built foundational expertise in algorithms and systems programming."
-    },
-    {
-      "period": "2024 — 2025",
-      "title": "App Development & Cloud / MLOps Certifications",
-      "description": "Shipped Zesto to the iOS App Store with LLM streaming features and Firestore sync. Earned AWS Certified AI Practitioner credential and completed MLOps Masterclass."
-    },
-    {
-      "period": "2025 — 2026",
-      "title": "Medical Imaging AI Research & Swin Transformers",
-      "description": "Adapted vision transformers for CheXpert multi-label pathology classification (0.9004 AUC), TB lesion localization, and Swin-UNet V2 segmentation with multi-GPU DDP training."
+      "period": "2026 — Expected 2027",
+      "title": "M.S. in Computer Science, Arizona State University",
+      "description": "Advancing research in deep learning, computer vision, and multimodal systems, with graduate coursework in Cloud Computing, Data-Intensive ML Systems, and Data Mining."
     },
     {
       "period": "2026",
@@ -36,9 +26,24 @@
       "description": "Led development of an on-premise multimodal accessibility pipeline using Qwen3-VL-32B and FastAPI, processing 505 slides in 1.4s/image and detecting 531 WCAG violations."
     },
     {
-      "period": "2026 — Expected 2027",
-      "title": "M.S. in Computer Science, Arizona State University",
-      "description": "Advancing research in deep learning, computer vision, and multimodal systems, with graduate coursework in Cloud Computing, Data-Intensive ML Systems, and Data Mining."
+      "period": "2025 — 2026",
+      "title": "Medical Imaging AI Research & Swin Transformers",
+      "description": "Adapted vision transformers for CheXpert multi-label pathology classification (0.9004 AUC), TB lesion localization, and Swin-UNet V2 segmentation with multi-GPU DDP training."
+    },
+    {
+      "period": "2024 — 2025",
+      "title": "App Development & Cloud / MLOps Certifications",
+      "description": "Shipped Zesto to the iOS App Store with LLM streaming features and Firestore sync. Earned AWS Certified AI Practitioner credential and completed MLOps Masterclass."
+    },
+    {
+      "period": "2022 — 2026",
+      "title": "B.S. in Computer Science, Arizona State University",
+      "description": "Focused on Data Structures & Algorithms, Image Processing & Analysis (Deep Learning), and Machine Learning. Built foundational expertise in algorithms and systems programming."
+    },
+    {
+      "period": "Graduated May 2022",
+      "title": "International Baccalaureate Diploma (IBDP), The British International School Abu Dhabi",
+      "description": "Completed the International Baccalaureate Diploma. Higher Level (HL): Computer Science, ITGS, Physics, Mathematics Analysis and Approaches. Standard Level (SL): English, French ab initio."
     }
   ],
   "projects": [
